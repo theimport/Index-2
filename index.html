@@ -1,187 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pedido G5</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>theimportg5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
+      background-color: #0f0f0f;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: url('https://i.imgur.com/XqvLq5R.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.75);
-      padding: 20px;
-      margin: 30px;
-      border-radius: 10px;
+      padding: 0;
     }
 
     .titulo-3d {
-      font-family: 'Anton', sans-serif;
-      font-size: 60px;
+      font-size: 3em;
       text-align: center;
-      margin-top: 40px;
-      color: white;
-      text-transform: uppercase;
-      text-shadow:
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        4px 4px 0 #555;
+      margin-top: 30px;
+      color: #00ffd5;
+      text-shadow: 2px 2px 0 #000, 4px 4px 0 #555;
     }
 
-    label {
-      display: block;
+    .overlay {
+      background-color: #1b1b1b;
+      padding: 25px;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffd5;
+    }
+
+    .overlay h2 {
+      color: #00ffd5;
       margin-bottom: 10px;
-      font-size: 18px;
     }
 
-    input[type="checkbox"], input[type="text"], input[type="tel"] {
-      transform: scale(1.1);
-      margin-top: 5px;
-      margin-bottom: 15px;
-      padding: 8px;
-      border-radius: 5px;
-      border: none;
-      width: 100%;
-    }
-
-    .button {
-      background-color: #ffffff;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      margin-top: 15px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .button:hover {
-      background-color: #ddd;
-    }
-
-    .copy-box {
-      background: #fff;
-      color: #000;
-      padding: 10px;
-      border-radius: 5px;
-      margin: 10px 0;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .whatsapp-link {
-      display: inline-block;
+    .formulario label {
+      display: block;
       margin-top: 10px;
-      background: #25D366;
-      color: white;
-      padding: 10px 15px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
+      font-weight: 500;
     }
 
-    #formulario-envio, #alias-info {
-      display: none;
+    .formulario input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2a2a2a;
+      color: white;
+    }
+
+    .montos {
+      margin-top: 20px;
+    }
+
+    .montos label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .montos input {
+      margin-right: 10px;
+    }
+
+    .boton {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: 0.3s ease;
+    }
+
+    .boton:hover {
+      background-color: #1ebe5d;
     }
   </style>
 </head>
 <body>
 
-  <!-- Título Principal -->
   <div class="titulo-3d">theimportg5</div>
 
-  <!-- Selección de montos -->
-  <div class="overlay" id="seleccion-monto">
-    <h3>Seleccioná tu monto de pedido</h3>
-    <label><input type="checkbox" name="monto" value="43000"> $43.000 = $250.000</label>
-    <label><input type="checkbox" name="monto" value="55000"> $55.000 = $350.000</label>
-    <label><input type="checkbox" name="monto" value="67000"> $67.000 = $550.000</label>
-    <label><input type="checkbox" name="monto" value="73000"> $73.000 = $650.000</label>
-    <label><input type="checkbox" name="monto" value="85000"> $85.000 = $800.000</label>
-    <label><input type="checkbox" name="monto" value="100000"> $100.000 = $1.000.000</label>
-    <br>
-    <button class="button" onclick="mostrarFormulario()">Continuar</button>
+  <!-- Aviso antes del formulario -->
+  <div class="overlay">
+    <h2>📦 Información importante sobre el envío</h2>
+    <p>🚚 El envío demora entre <strong>2 y 3 días hábiles</strong> en llegar.</p>
+    <p>📄 Una vez realizado el pedido, se te brinda el <strong>comprobante de envío</strong>, el <strong>código de seguimiento</strong> y la <strong>factura de compra</strong>.</p>
+    <p>💰 El costo del envío es de <strong>$8.000</strong>, y <strong>solo se abona al momento de recibir el pedido</strong>.</p>
   </div>
 
-  <!-- Formulario de datos personales -->
-  <div class="overlay" id="formulario-envio">
-    <h3>Completá el formulario de envío</h3>
-    <label for="nombre">Nombre*:</label>
-    <input type="text" id="nombre" required>
+  <!-- Formulario -->
+  <div class="overlay formulario">
+    <label>Nombre *</label>
+    <input type="text" id="nombre">
 
-    <label for="dni">DNI*:</label>
-    <input type="text" id="dni" required>
+    <label>DNI *</label>
+    <input type="text" id="dni">
 
-    <label for="localidad">Localidad*:</label>
-    <input type="text" id="localidad" required>
+    <label>Localidad *</label>
+    <input type="text" id="localidad">
 
-    <label for="provincia">Provincia*:</label>
-    <input type="text" id="provincia" required>
+    <label>Provincia *</label>
+    <input type="text" id="provincia">
 
-    <label for="direccion">Dirección*:</label>
-    <input type="text" id="direccion" required>
+    <label>Dirección *</label>
+    <input type="text" id="direccion">
 
-    <label for="telefono">Teléfono*:</label>
-    <input type="tel" id="telefono" required>
+    <label>Teléfono *</label>
+    <input type="text" id="telefono">
 
-    <button class="button" onclick="enviarPedido()">Enviar pedido</button>
+    <div class="montos">
+      <label><input type="radio" name="monto"> $43.000 → $250.000</label>
+      <label><input type="radio" name="monto"> $55.000 → $350.000</label>
+      <label><input type="radio" name="monto"> $67.000 → $550.000</label>
+      <label><input type="radio" name="monto"> $73.000 → $650.000</label>
+      <label><input type="radio" name="monto"> $85.000 → $800.000</label>
+      <label><input type="radio" name="monto"> $100.000 → $1.000.000</label>
+    </div>
+
+    <button class="boton" onclick="enviarPedido()">Enviar datos y comprobante por WhatsApp para confirmar compra</button>
   </div>
 
-  <!-- Información para pago -->
-  <div class="overlay" id="alias-info">
-    <p><strong>Alias:</strong></p>
-    <div class="copy-box" onclick="copiarAlias()">theimport1</div>
-    <p><strong>Nombre:</strong> Iván Gómez</p>
-    <a class="whatsapp-link"
-       href="https://wa.me/5492224513719?text=Hola%20buenas%20!%20Te%20dejo%20mis%20datos%20para%20confirmar%20el%20env%C3%ADo%20y%20el%20comprobante%20de%20pago%20.muchas%20gracias"
-       target="_blank">Enviar comprobante por WhatsApp</a>
-  </div>
-
-  <!-- Funcionalidad JavaScript -->
   <script>
-    function mostrarFormulario() {
-      const seleccionados = document.querySelectorAll('input[name="monto"]:checked');
-      if (seleccionados.length === 0) {
-        alert("Seleccioná al menos un monto para continuar.");
-        return;
-      }
-      document.getElementById('formulario-envio').style.display = 'block';
-      document.getElementById('seleccion-monto').style.display = 'none';
-    }
-
     function enviarPedido() {
       const campos = ['nombre', 'dni', 'localidad', 'provincia', 'direccion', 'telefono'];
-      let incompletos = [];
+      let faltan = [];
 
+      let datos = {};
       campos.forEach(id => {
         const valor = document.getElementById(id).value.trim();
         if (!valor) {
-          incompletos.push(id);
+          faltan.push(id);
         }
+        datos[id] = valor;
       });
 
-      if (incompletos.length > 0) {
-        alert("Por favor, completá todos los campos obligatorios marcados con *.");
-      } else {
-        alert("Pedido enviado correctamente (simulado).");
-        document.getElementById('formulario-envio').style.display = 'none';
-        document.getElementById('alias-info').style.display = 'block';
+      if (faltan.length > 0) {
+        alert("Por favor, completá todos los campos obligatorios.");
+        return;
       }
-    }
 
-    function copiarAlias() {
-      navigator.clipboard.writeText("theimport1")
-        .then(() => alert("Alias copiado: theimport1"))
-        .catch(err => alert("Error al copiar alias."));
+      const montoSeleccionado = document.querySelector('input[name="monto"]:checked');
+      if (!montoSeleccionado) {
+        alert("Por favor, seleccioná un monto.");
+        return;
+      }
+
+      const montoTexto = montoSeleccionado.parentElement.innerText.trim();
+
+      const mensaje = `Hola buenas! Te dejo mis datos para confirmar el envío y el comprobante de pago. Muchas gracias.
+
+📝 *Datos del envío:*
+- Nombre: ${datos.nombre}
+- DNI: ${datos.dni}
+- Localidad: ${datos.localidad}
+- Provincia: ${datos.provincia}
+- Dirección: ${datos.direccion}
+- Teléfono: ${datos.telefono}
+- Monto elegido: ${montoTexto}
+
+Alias: theimportg55
+Nombre: Iván Gómez`;
+
+      const telefono = '5492224513719'; // Número oculto
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
     }
   </script>
 
