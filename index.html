@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedido G5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: url('https://i.imgur.com/XqvLq5R.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 20px;
+      margin: 30px;
+      border-radius: 10px;
+    }
+
+    .titulo-3d {
+      font-family: 'Anton', sans-serif;
+      font-size: 60px;
+      text-align: center;
+      margin-top: 40px;
+      color: white;
+      text-transform: uppercase;
+      text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        4px 4px 0 #555;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    input[type="checkbox"], input[type="text"], input[type="tel"] {
+      transform: scale(1.1);
+      margin-top: 5px;
+      margin-bottom: 15px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+    }
+
+    .button {
+      background-color: #ffffff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .button:hover {
+      background-color: #ddd;
+    }
+
+    .copy-box {
+      background: #fff;
+      color: #000;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .whatsapp-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: #25D366;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    #formulario-envio, #alias-info {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Título Principal -->
+  <div class="titulo-3d">theimportg5</div>
+
+  <!-- Selección de montos -->
+  <div class="overlay" id="seleccion-monto">
+    <h3>Seleccioná tu monto de pedido</h3>
+    <label><input type="checkbox" name="monto" value="43000"> $43.000 = $250.000</label>
+    <label><input type="checkbox" name="monto" value="55000"> $55.000 = $350.000</label>
+    <label><input type="checkbox" name="monto" value="67000"> $67.000 = $550.000</label>
+    <label><input type="checkbox" name="monto" value="73000"> $73.000 = $650.000</label>
+    <label><input type="checkbox" name="monto" value="85000"> $85.000 = $800.000</label>
+    <label><input type="checkbox" name="monto" value="100000"> $100.000 = $1.000.000</label>
+    <br>
+    <button class="button" onclick="mostrarFormulario()">Continuar</button>
+  </div>
+
+  <!-- Formulario de datos personales -->
+  <div class="overlay" id="formulario-envio">
+    <h3>Completá el formulario de envío</h3>
+    <label for="nombre">Nombre*:</label>
+    <input type="text" id="nombre" required>
+
+    <label for="dni">DNI*:</label>
+    <input type="text" id="dni" required>
+
+    <label for="localidad">Localidad*:</label>
+    <input type="text" id="localidad" required>
+
+    <label for="provincia">Provincia*:</label>
+    <input type="text" id="provincia" required>
+
+    <label for="direccion">Dirección*:</label>
+    <input type="text" id="direccion" required>
+
+    <label for="telefono">Teléfono*:</label>
+    <input type="tel" id="telefono" required>
+
+    <button class="button" onclick="enviarPedido()">Enviar pedido</button>
+  </div>
+
+  <!-- Información para pago -->
+  <div class="overlay" id="alias-info">
+    <p><strong>Alias:</strong></p>
+    <div class="copy-box" onclick="copiarAlias()">theimport1</div>
+    <p><strong>Nombre:</strong> Iván Gómez</p>
+    <a class="whatsapp-link"
+       href="https://wa.me/5492224513719?text=Hola%20buenas%20!%20Te%20dejo%20mis%20datos%20para%20confirmar%20el%20env%C3%ADo%20y%20el%20comprobante%20de%20pago%20.muchas%20gracias"
+       target="_blank">Enviar comprobante por WhatsApp</a>
+  </div>
+
+  <!-- Funcionalidad JavaScript -->
+  <script>
+    function mostrarFormulario() {
+      const seleccionados = document.querySelectorAll('input[name="monto"]:checked');
+      if (seleccionados.length === 0) {
+        alert("Seleccioná al menos un monto para continuar.");
+        return;
+      }
+      document.getElementById('formulario-envio').style.display = 'block';
+      document.getElementById('seleccion-monto').style.display = 'none';
+    }
+
+    function enviarPedido() {
+      const campos = ['nombre', 'dni', 'localidad', 'provincia', 'direccion', 'telefono'];
+      let incompletos = [];
+
+      campos.forEach(id => {
+        const valor = document.getElementById(id).value.trim();
+        if (!valor) {
+          incompletos.push(id);
+        }
+      });
+
+      if (incompletos.length > 0) {
+        alert("Por favor, completá todos los campos obligatorios marcados con *.");
+      } else {
+        alert("Pedido enviado correctamente (simulado).");
+        document.getElementById('formulario-envio').style.display = 'none';
+        document.getElementById('alias-info').style.display = 'block';
+      }
+    }
+
+    function copiarAlias() {
+      navigator.clipboard.writeText("theimport1")
+        .then(() => alert("Alias copiado: theimport1"))
+        .catch(err => alert("Error al copiar alias."));
+    }
+  </script>
+
+</body>
+</html>
