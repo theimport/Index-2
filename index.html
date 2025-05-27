@@ -1,92 +1,180 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>theimportg5 - Pago</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>theimportg5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
     }
-    .container {
-      background: #fff;
-      max-width: 500px;
-      margin: auto;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
+
+    .titulo-3d {
+      font-size: 3em;
       text-align: center;
-      color: #333;
+      margin-top: 30px;
+      color: #00ffd5;
+      text-shadow: 2px 2px 0 #000, 4px 4px 0 #555;
     }
-    .info {
-      margin: 20px 0;
-      background-color: #e0f7e9;
-      padding: 15px;
-      border-left: 5px solid #4CAF50;
-      border-radius: 6px;
-      color: #2e7d32;
-      font-size: 16px;
+
+    .overlay {
+      background-color: #1b1b1b;
+      padding: 25px;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffd5;
     }
-    .alias-destacado {
-      text-align: center;
-      background-color: #fce4ec;
-      border: 2px dashed #ec407a;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #c2185b;
-      margin-bottom: 20px;
+
+    .overlay h2 {
+      color: #00ffd5;
+      margin-bottom: 10px;
     }
-    .whatsapp-btn {
+
+    .formulario label {
       display: block;
-      background-color: #25D366;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    .formulario input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2a2a2a;
       color: white;
-      text-align: center;
-      padding: 12px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
+    }
+
+    .montos {
       margin-top: 20px;
     }
-    .whatsapp-btn:hover {
-      background-color: #1ebd5a;
+
+    .montos label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .montos input {
+      margin-right: 10px;
+    }
+
+    .boton {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: 0.3s ease;
+    }
+
+    .boton:hover {
+      background-color: #1ebe5d;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Aboná tu producto con tarjeta / crédito o débito</h2>
 
-    <div class="alias-destacado">
-      Alias de pago: <br />
-      <span>theimportg55</span>
+  <div class="titulo-3d">theimportg5</div>
+
+  <!-- Aviso antes del formulario -->
+  <div class="overlay">
+    <h2>📦 Información importante sobre el envío</h2>
+    <p>🚚 El envío demora entre <strong>2 y 3 días hábiles</strong> en llegar.</p>
+    <p>📄 Una vez realizado el pedido, se te brinda el <strong>comprobante de envío</strong>, el <strong>código de seguimiento</strong> y la <strong>factura de compra</strong>.</p>
+    <p>💰 El costo del envío es de <strong>$8.000</strong>, y <strong>solo se abona al momento de recibir el pedido</strong>.</p>
+  </div>
+
+  <!-- Formulario -->
+  <div class="overlay formulario">
+    <label>Nombre *</label>
+    <input type="text" id="nombre">
+
+    <label>DNI *</label>
+    <input type="text" id="dni">
+
+    <label>Localidad *</label>
+    <input type="text" id="localidad">
+
+    <label>Provincia *</label>
+    <input type="text" id="provincia">
+
+    <label>Dirección *</label>
+    <input type="text" id="direccion">
+
+    <label>Teléfono *</label>
+    <input type="text" id="telefono">
+
+    <div class="montos">
+      <label><input type="radio" name="monto"> $43.000 → $250.000</label>
+      <label><input type="radio" name="monto"> $55.000 → $350.000</label>
+      <label><input type="radio" name="monto"> $67.000 → $550.000</label>
+      <label><input type="radio" name="monto"> $73.000 → $650.000</label>
+      <label><input type="radio" name="monto"> $85.000 → $800.000</label>
+      <label><input type="radio" name="monto"> $100.000 → $1.000.000</label>
     </div>
 
-    <div class="info">
-      Estás por realizar un pago de <strong>$4.000</strong><br />
-      <strong>Nombre del titular:</strong> Iván Gómez
-    </div>
-
-    <a class="whatsapp-btn" href="#" onclick="enviarMensaje()">Enviar por WhatsApp</a>
+    <button class="boton" onclick="enviarPedido()">Enviar datos y comprobante por WhatsApp para confirmar compra</button>
   </div>
 
   <script>
-    function enviarMensaje() {
-      const telefono = '1234567890'; // Reemplazá con tu número real
-      const alias = 'theimportg55';
-      const nombre = 'Iván Gómez';
-      const monto = '$4.000';
+    function enviarPedido() {
+      const campos = ['nombre', 'dni', 'localidad', 'provincia', 'direccion', 'telefono'];
+      let faltan = [];
 
-      const mensaje = `Hola, quiero realizar un pago.\nAlias: ${alias}\nNombre: ${nombre}\nMonto: ${monto}`;
+      let datos = {};
+      campos.forEach(id => {
+        const valor = document.getElementById(id).value.trim();
+        if (!valor) {
+          faltan.push(id);
+        }
+        datos[id] = valor;
+      });
+
+      if (faltan.length > 0) {
+        alert("Por favor, completá todos los campos obligatorios.");
+        return;
+      }
+
+      const montoSeleccionado = document.querySelector('input[name="monto"]:checked');
+      if (!montoSeleccionado) {
+        alert("Por favor, seleccioná un monto.");
+        return;
+      }
+
+      const montoTexto = montoSeleccionado.parentElement.innerText.trim();
+
+      const mensaje = `Hola buenas! Te dejo mis datos para confirmar el envío y el comprobante de pago. Muchas gracias.
+
+📝 *Datos del envío:*
+- Nombre: ${datos.nombre}
+- DNI: ${datos.dni}
+- Localidad: ${datos.localidad}
+- Provincia: ${datos.provincia}
+- Dirección: ${datos.direccion}
+- Teléfono: ${datos.telefono}
+- Monto elegido: ${montoTexto}
+
+Alias: theimportg55
+Nombre: Iván Gómez`;
+
+      const telefono = '5492224513719'; // Número oculto
       const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-
       window.open(url, '_blank');
     }
   </script>
+
 </body>
 </html>
