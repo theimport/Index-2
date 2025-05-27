@@ -25,10 +25,22 @@
     .info {
       margin: 20px 0;
       background-color: #e0f7e9;
-      padding: 12px;
+      padding: 15px;
       border-left: 5px solid #4CAF50;
-      border-radius: 4px;
+      border-radius: 6px;
       color: #2e7d32;
+      font-size: 16px;
+    }
+    .alias-destacado {
+      text-align: center;
+      background-color: #fce4ec;
+      border: 2px dashed #ec407a;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #c2185b;
+      margin-bottom: 20px;
     }
     .whatsapp-btn {
       display: block;
@@ -50,10 +62,14 @@
   <div class="container">
     <h2>Aboná tu producto con tarjeta / crédito o débito</h2>
 
+    <div class="alias-destacado">
+      Alias de pago: <br />
+      <span>theimportg55</span>
+    </div>
+
     <div class="info">
-      Vas a realizar un pago de <strong>$4.000 pesos</strong>.<br />
-      <strong>Alias:</strong> theimportg55<br />
-      <strong>Nombre:</strong> Iván Gómez
+      Estás por realizar un pago de <strong>$4.000</strong><br />
+      <strong>Nombre del titular:</strong> Iván Gómez
     </div>
 
     <a class="whatsapp-btn" href="#" onclick="enviarMensaje()">Enviar por WhatsApp</a>
@@ -61,7 +77,7 @@
 
   <script>
     function enviarMensaje() {
-      const telefono = '1234567890'; // Reemplazá con tu número
+      const telefono = '1234567890'; // Reemplazá con tu número real
       const alias = 'theimportg55';
       const nombre = 'Iván Gómez';
       const monto = '$4.000';
